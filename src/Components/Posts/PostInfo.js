@@ -1,4 +1,4 @@
-export const postInfo = [
+exports.postInfo = [
     {
         id: 1,
         authorImage: "https://img.freepik.com/free-photo/portrait-happy-young-woman-looking-camera_23-2147892777.jpg?w=2000",
@@ -52,15 +52,3 @@ export const postInfo = [
         ]
     }
 ]
-
-export const likeIt = (postId)=>{
-    console.log(postId)
-    const post = postInfo.find((item)=>{
-        item.id==postId
-    });
-    // postInfo.map((item)=>{
-    //     console.log(item.id)
-    // });
-
-    console.log(post);
-}

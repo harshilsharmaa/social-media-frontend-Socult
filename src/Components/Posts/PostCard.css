@@ -84,6 +84,11 @@
     display: flex;
     width: 90%;
 }
+.postCard .comments-box .comments .input img{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+}
 .postCard .comments-box .comments .input input{
     height: 30px;
     width: 90%;
