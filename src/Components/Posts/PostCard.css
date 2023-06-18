@@ -1,8 +1,9 @@
 .postCard{
     width: 55%;
-    /* border: 1px solid purple; */
+    margin-top: 15px;
     border-radius: 10px;
     background-color: #d3385210;
+    padding: 5px;
 }
 
 .postCard .media{
@@ -43,6 +44,7 @@
 .postCard .description{
     padding-top:5px;
     padding-left:20px;
+    padding-bottom: 10px;
     font-size: 15px;
     border-bottom: 1px solid #ccc;
 }
@@ -76,3 +78,17 @@
     border-radius: 100%;
 }
 
+
+
+.postCard .comments-box .comments .input{
+    display: flex;
+    width: 90%;
+}
+.postCard .comments-box .comments .input input{
+    height: 30px;
+    width: 90%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    margin-top: 10px;
+}
