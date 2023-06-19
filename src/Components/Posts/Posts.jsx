@@ -3,12 +3,12 @@ import './Posts.css'
 import PostCard from './PostCard'
 import { postInfo } from './PostInfo'
 
-const Posts = () => {
+const Posts = ({posts}) => {
 
   return (
     <div className='posts-container'>
         {
-            postInfo && postInfo.length>0 && postInfo.map((item)=>{
+            posts && posts.length>0 && posts.map((item)=>{
                 return (
                     <PostCard key={item.id} post={item}/>
                 )

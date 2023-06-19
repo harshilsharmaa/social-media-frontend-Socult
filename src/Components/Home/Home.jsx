@@ -1,32 +1,16 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import './Home.css'
 import Navbar from '../Navbar/Navbar'
 import Posts from '../Posts/Posts'
+import {Link} from 'react-router-dom'
+import {getAllProfiles} from '../Profiles'
+import { postInfo } from '../Posts/PostInfo'
 
 const Home = () => {
 
     
-
-    const [profiles, setProfiles] = useState([
-        {
-            id: 1,
-            name: "abcd",
-            image: "abcd",
-            isfriend: false
-        },
-        {
-            id: 2,
-            name: "abcd",
-            image: "abcd",
-            isfriend: false
-        },
-        {
-            id: 3,
-            name: "abcd",
-            image: "abcd",
-            isfriend: false
-        }
-    ])
+    const [posts, setPosts] = useState(null);
+    const [profiles, setProfiles] = useState(null)
 
     const addFriendHandler = (id)=>{
         const getProfiles = profiles.map((item)=>{
@@ -38,6 +22,16 @@ const Home = () => {
         })
         setProfiles(getProfiles);
     }
+
+
+    useEffect(()=>{
+        const getProfiles = getAllProfiles();
+        setProfiles(getProfiles);
+
+        setPosts(postInfo);
+
+    },[])
+
 
   return (
     <div>
@@ -55,18 +49,18 @@ const Home = () => {
                 </div>
             </div>
             <div className="center">
-                <Posts/>
+                <Posts posts={posts}/>
             </div>
             <div className="right">
                 <div className="heading">
                     <h3>Who to Follow</h3>
                 </div>
                     {
-                        profiles.map((item)=>{
+                        profiles && profiles.map((item)=>{
                             return (
                                 <div className="profiles">
                                     <img src="" alt="" />
-                                    <Link to={`${}`}>{item.name}</Link>
+                                    <Link to={`/user/${item.id}/${item.name}`}>{item.name}</Link>
                                     <button onClick={(e)=>addFriendHandler(item.id)}>{item.isfriend?"Added":"Add Friend"}</button>
                                 </div>
                                 
