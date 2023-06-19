@@ -59,9 +59,9 @@ const Home = () => {
                         profiles && profiles.map((item)=>{
                             return (
                                 <div className="profiles">
-                                    <img src="" alt="" />
+                                    <img src={item.image} alt="" />
                                     <Link to={`/user/${item.id}/${item.name}`}>{item.name}</Link>
-                                    <button onClick={(e)=>addFriendHandler(item.id)}>{item.isfriend?"Added":"Add Friend"}</button>
+                                    <button style={{color:item.isfriend?"green":"rgba(0, 0, 255, 0.685)"}} onClick={(e)=>addFriendHandler(item.id)}>{item.isfriend?"Added":"Add Friend"}</button>
                                 </div>
                                 
                             )

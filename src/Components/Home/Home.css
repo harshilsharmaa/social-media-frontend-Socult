@@ -35,6 +35,29 @@
     /* border: 1px solid green; */
 }
 
+.home .right .profiles{
+    display: flex;
+}
+
+.home .right .profiles img{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+}
+
+.home .right .profiles a{
+    margin-left: 15px;
+}
+
+.home .right .profiles button{
+    border: none;
+    outline: none;
+    background: none;
+    color: rgba(0, 0, 255, 0.685);
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
 
 
 /* media query */
@@ -46,6 +69,6 @@
     .home .left,
     .home .center,
     .home .right{
-        width: 90%;
+        width: 100%;
     }
 }

@@ -64,7 +64,6 @@
 .profile .content{
     width: 100%;
     display: flex;
-    border: 1px solid red;
 }
 
 .profile .content .left{
@@ -76,8 +75,24 @@
     /* width: 95%; */
     background-color: rgba(0, 0, 0, 0.288);
     padding: 10px;
+    padding-top: 40px;
 }
 
 .profile .content .center{
     width: 55%;
+}
+
+
+
+/* media query */
+@media (max-width: 600px){
+    .profile .content{
+        flex-direction: column;
+    }
+
+    .profile .content .left,
+    .profile .content .center,
+    .profile .content .right{
+        width: 100%;
+    }
 }

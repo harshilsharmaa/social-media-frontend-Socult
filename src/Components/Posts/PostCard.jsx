@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import './PostCard.css'
-import { Link,  } from 'react-router-dom/dist';
+import { Link, } from 'react-router-dom/dist';
 // import {  } from './PostInfo';
+
+import {
+  Favorite,
+  FavoriteBorder,
+} from "@mui/icons-material"
 
 const PostCard = ({ post }) => {
 
@@ -12,17 +17,17 @@ const PostCard = ({ post }) => {
   const [comments, setComments] = useState(post?.comments);
   const [comment, setComment] = useState(null);
 
-  const likeHandler = (e)=>{
+  const likeHandler = (e) => {
     e.preventDefault();
-    if(!isLiked){
-      setLikes(likes+1);
+    if (!isLiked) {
+      setLikes(likes + 1);
       setIsLiked(true);
     }
   }
 
-  const commentHandler = (e)=>{
+  const commentHandler = (e) => {
     e.preventDefault()
-    if(comment){
+    if (comment) {
       const newComment = {
         authorName: post?.authorName,
         authorImage: post?.authorImage,
@@ -44,11 +49,19 @@ const PostCard = ({ post }) => {
         </div>
       </div>
       <div className="media">
-        <img src={post?.media} alt="" />
+        {post?.media && post.media.includes('.mp4') ? (
+          <video controls>
+            <source src={post.media} type="video/mp4" />
+          </video>
+        ) : (
+          <img src={post.media} alt="" />
+        )}
       </div>
       <div className="likes">
         Likes: {likes}
-        <button onClick={(e) => likeHandler(e)}>like</button>
+        {
+          isLiked ? <Favorite style={{ color: "red" }} /> : <FavoriteBorder onClick={(e) => likeHandler(e)} />
+        }
       </div>
       <div className="description">{post?.description}</div>
       <div className="comments-box">
@@ -60,7 +73,7 @@ const PostCard = ({ post }) => {
                 <div key={index} className="comment">
                   <div className="authorInfo">
                     <img src={comment.authorImage} alt="" />
-                    <Link style={{ textDecoration: 'none', color: 'blue', marginLeft: '5px' }}>{comment.authorName}</Link>
+                    <Link to={`/user/${comment.authorId}/${comment.authorName}`} style={{ textDecoration: 'none', color: 'blue', marginLeft: '5px' }}>{comment.authorName}</Link>
                   </div>
                   <div className="comment-content">
                     <p>{comment.comment}</p>
@@ -71,8 +84,8 @@ const PostCard = ({ post }) => {
           }
           <div className="input">
             <img src={post?.authorImage} alt="" />
-            <input onChange={(e)=>setComment(e.target.value)} type="text" placeholder='Post a comment' />
-            <button onClick={(e)=>commentHandler(e)}>Post</button>
+            <input onChange={(e) => setComment(e.target.value)} type="text" placeholder='Post a comment' />
+            <button onClick={(e) => commentHandler(e)}>Add</button>
           </div>
         </div>
       </div>
